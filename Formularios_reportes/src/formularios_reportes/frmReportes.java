@@ -187,8 +187,11 @@ public class frmReportes extends javax.swing.JFrame {
                 para.put("mes",numMes);
                 para.put("año",anho);
             }                 
-            else if(cbTiposReporte.getSelectedItem().toString() == "Ganancias Mensuales")
-                 in = new FileInputStream(new File("./src/reportes/gananciasMensuales.jrxml"));
+            else if(cbTiposReporte.getSelectedItem().toString() == "Ganancias Mensuales"){
+                in = new FileInputStream(new File("./src/reportes/gananciasMensuales.jrxml"));
+                para.put("mes",numMes);
+                para.put("año",anho);
+            }
             else if(cbTiposReporte.getSelectedItem().toString() == "Clientes Frecuentes"){
                 in = new FileInputStream(new File("./src/reportes/clientesFrecuentes.jrxml"));
             }
@@ -199,8 +202,6 @@ public class frmReportes extends javax.swing.JFrame {
             
             JasperPrint j = JasperFillManager.fillReport(jr,para,con);
             JasperViewer.viewReport(j,false);
-            //OutputStream os = new FileOutputStream (new File("C:\\Users\\Manutooth\\Desktop\\reportes\\trat1.pdf"));
-            //JasperExportManager.exportReportToPdfStream(j,os);
         }
         catch(Exception ex){
             ex.printStackTrace();
@@ -249,7 +250,7 @@ public class frmReportes extends javax.swing.JFrame {
                 para.put("año",anho);
                 JasperPrint j = JasperFillManager.fillReport(jr,para,con);
                 //OutputStream os = new FileOutputStream (new File("C:\\Users\\Manutooth\\Desktop\\reportes\\tratamientos.pdf"));
-                OutputStream os = new FileOutputStream (new File("./dist/Reportes pdf/tratamientos.pdf"));
+                OutputStream os = new FileOutputStream (new File("./src/Reportes pdf/tratamientos.pdf"));
                 JasperExportManager.exportReportToPdfStream(j,os);
             }
             else if(cbTiposReporte.getSelectedItem().toString() == "Paquetes más solicitados"){
@@ -261,10 +262,29 @@ public class frmReportes extends javax.swing.JFrame {
                 para.put("año",anho);
                 JasperPrint j = JasperFillManager.fillReport(jr,para,con);
                 //OutputStream os = new FileOutputStream (new File("C:\\Users\\Manutooth\\Desktop\\reportes\\paquetes.pdf"));
-                OutputStream os = new FileOutputStream (new File("./dist/Reportes pdf/paquetes.pdf"));
+                OutputStream os = new FileOutputStream (new File("./src/Reportes pdf/paquetes.pdf"));
                 JasperExportManager.exportReportToPdfStream(j,os);
-            }                 
-            
+            }
+            else if(cbTiposReporte.getSelectedItem().toString() == "Clientes Frecuentes"){
+                in = new FileInputStream(new File("./src/reportes/clientesFrecuentes.jrxml"));
+                
+                JasperDesign jd = JRXmlLoader.load(in);
+                JasperReport jr = JasperCompileManager.compileReport(jd);
+                JasperPrint j = JasperFillManager.fillReport(jr,para,con);
+                OutputStream os = new FileOutputStream (new File("./src/Reportes pdf/clientes.pdf"));
+                JasperExportManager.exportReportToPdfStream(j,os);
+            }
+            else if(cbTiposReporte.getSelectedItem().toString() == "Ganancias mensuales"){
+                in = new FileInputStream(new File("./src/reportes/gananciasMensuales.jrxml"));
+                
+                JasperDesign jd = JRXmlLoader.load(in);
+                JasperReport jr = JasperCompileManager.compileReport(jd);
+                para.put("mes",numMes);
+                para.put("año",anho);
+                JasperPrint j = JasperFillManager.fillReport(jr,para,con);
+                OutputStream os = new FileOutputStream (new File("./src/Reportes pdf/ganancias.pdf"));
+                JasperExportManager.exportReportToPdfStream(j,os);
+            }
         }
         catch(Exception ex){
             ex.printStackTrace();
