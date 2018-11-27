@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -77,6 +79,11 @@ public class frmReportes extends javax.swing.JFrame {
         });
 
         jButton2.setText("Descargar en PDF");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,52 +177,100 @@ public class frmReportes extends javax.swing.JFrame {
                 }
             };
             if(cbTiposReporte.getSelectedItem().toString() == "Tratamientos más solicitados"){
-                in = new FileInputStream(new File("D:\\LP2 TA\\Reportes java Elinfff\\Formularios_reportes\\src\\reportes\\tratamientosMasVendidos.jrxml"));
+                in = new FileInputStream(new File("./src/reportes/tratamientosMasVendidos.jrxml"));
                 para.put("mes",numMes);
                 para.put("año",anho);
             }
                 
             else if(cbTiposReporte.getSelectedItem().toString() == "Paquetes más solicitados"){
-                in = new FileInputStream(new File("D:\\LP2 TA\\Reportes java Elinfff\\Formularios_reportes\\src\\reportes\\paquetesMasVendidos.jrxml"));
+                in = new FileInputStream(new File("./src/reportes/paquetesMasVendidos.jrxml"));
                 para.put("mes",numMes);
                 para.put("año",anho);
             }                 
             else if(cbTiposReporte.getSelectedItem().toString() == "Ganancias Mensuales")
-                 in = new FileInputStream(new File("D:\\LP2 TA\\Reportes java Elinfff\\Formularios_reportes\\src\\reportes\\gananciasMensuales.jrxml"));
+                 in = new FileInputStream(new File("./src/reportes/gananciasMensuales.jrxml"));
             else if(cbTiposReporte.getSelectedItem().toString() == "Clientes Frecuentes"){
-                in = new FileInputStream(new File("D:\\LP2 TA\\Reportes java Elinfff\\Formularios_reportes\\src\\reportes\\clientesFrecuentes.jrxml"));
+                in = new FileInputStream(new File("./src/reportes/clientesFrecuentes.jrxml"));
             }
             
-            //InputStream in = new FileInputStream(new File("D:\\LP2 TA\\Reportes java Elinfff\\Formularios_reportes\\src\\reportes\\clientesFrecuentes.jrxml"));
-            //InputStream in = new FileInputStream(new File("D:\\LP2 TA\\Reportes java Elinfff\\Formularios_reportes\\src\\reportes\\paquetesMasVendidos.jrxml"));
             
             JasperDesign jd = JRXmlLoader.load(in);
             JasperReport jr = JasperCompileManager.compileReport(jd);
             
-            
-                         
-            
             JasperPrint j = JasperFillManager.fillReport(jr,para,con);
             JasperViewer.viewReport(j,false);
-            //OutputStream os = new FileOutputStream (new File("D:\\"));
+            //OutputStream os = new FileOutputStream (new File("C:\\Users\\Manutooth\\Desktop\\reportes\\trat1.pdf"));
             //JasperExportManager.exportReportToPdfStream(j,os);
-            /*
-            
-            HashMap<String,Object> parametros = new HashMap<String,Object>();
-            
-            parametros.put("nombre", "Ejemplo2");
-            
-            JasperPrint impresion = JasperFillManager.fillReport(jr, parametros, con);
-            
-            JasperViewer visor = new JasperViewer(impresion);
-            visor.setVisible(true);
-            */
         }
         catch(Exception ex){
             ex.printStackTrace();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://quilla.lab.inf.pucp.edu.pe:3306/inf282g4",
+                    "inf282g4", "GvZf6p");
+            
+            String mesString = cbMes.getSelectedItem().toString();
+            Integer numMes = 1;
+            if(mesString == "Enero") numMes = 1;
+            if(mesString == "Febrero") numMes = 2;
+            if(mesString == "Marzo") numMes = 3;
+            if(mesString == "Abril") numMes = 4;
+            if(mesString == "Mayo") numMes = 5;
+            if(mesString == "Junio") numMes = 6;
+            if(mesString == "Julio") numMes = 7;
+            if(mesString == "Agosto") numMes = 8;
+            if(mesString == "Septiembre") numMes = 9;
+            if(mesString == "Octubre") numMes = 10;
+            if(mesString == "Noviembre") numMes = 11;
+            if(mesString == "Diciembre") numMes = 12;
+            
+            Integer anho = Integer.parseInt(cbAnho.getSelectedItem().toString());
+            
+            HashMap para = new HashMap();
+            
+            
+            InputStream in = new InputStream() {
+                @Override
+                public int read() throws IOException {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            };
+            if(cbTiposReporte.getSelectedItem().toString() == "Tratamientos más solicitados"){
+                in = new FileInputStream(new File("./src/reportes/tratamientosMasVendidos.jrxml"));
+                
+                JasperDesign jd = JRXmlLoader.load(in);
+                JasperReport jr = JasperCompileManager.compileReport(jd);
+                para.put("mes",numMes);
+                para.put("año",anho);
+                JasperPrint j = JasperFillManager.fillReport(jr,para,con);
+                //OutputStream os = new FileOutputStream (new File("C:\\Users\\Manutooth\\Desktop\\reportes\\tratamientos.pdf"));
+                OutputStream os = new FileOutputStream (new File("./dist/Reportes pdf/tratamientos.pdf"));
+                JasperExportManager.exportReportToPdfStream(j,os);
+            }
+            else if(cbTiposReporte.getSelectedItem().toString() == "Paquetes más solicitados"){
+                in = new FileInputStream(new File("./src/reportes/paquetesMasVendidos.jrxml"));
+                
+                JasperDesign jd = JRXmlLoader.load(in);
+                JasperReport jr = JasperCompileManager.compileReport(jd);
+                para.put("mes",numMes);
+                para.put("año",anho);
+                JasperPrint j = JasperFillManager.fillReport(jr,para,con);
+                //OutputStream os = new FileOutputStream (new File("C:\\Users\\Manutooth\\Desktop\\reportes\\paquetes.pdf"));
+                OutputStream os = new FileOutputStream (new File("./dist/Reportes pdf/paquetes.pdf"));
+                JasperExportManager.exportReportToPdfStream(j,os);
+            }                 
+            
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
