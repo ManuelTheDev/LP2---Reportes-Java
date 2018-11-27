@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dc02d98c-7baa-46dc-8e80-d3c84d615815">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="mes" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="año" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT SERVICIO.NOMBRE, SESION.FECHA_SESION, SERVICIO.PRECIO
+FROM SESION, SERVICIO 
+WHERE SERVICIO.ID_SERVICIO = SESION.ID_SERVICIO_FK AND MONTH(FECHA_SESION) = $P{mes} AND YEAR(FECHA_SESION) = $P{año}
+GROUP BY SERVICIO.NOMBRE
+ORDER BY SESION.FECHA_SESION]]>
+	</queryString>
+	<field name="NOMBRE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FECHA_SESION" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PRECIO" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="24" width="352" height="26" uuid="bcb28aa5-cbf7-4179-924c-6757da92fab3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE GANANCIAS MENSUALES - ASHPANA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="294" y="15" width="100" height="20" uuid="eff3f5c9-337a-4180-a69d-fceebb70ddf2"/>
+				<textFieldExpression><![CDATA[$P{mes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="15" width="100" height="20" uuid="4523e8f6-953e-4c5b-9066-996b52f2af5c"/>
+				<textFieldExpression><![CDATA[$P{año}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="36" y="10" width="100" height="20" uuid="6097236a-4041-4049-840f-bb1ce5530910"/>
+				<text><![CDATA[Nombre del Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="10" width="100" height="20" uuid="5df27103-f73d-4357-809c-75b57360f041"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="10" width="100" height="20" uuid="6f719c58-6197-4877-9840-361d3308c668"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="36" y="12" width="168" height="20" uuid="3e3e6b93-f424-418a-92ab-9ed6d9a05ab1"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="12" width="100" height="20" uuid="cbf7ae45-be3a-4e5f-b52b-b4643f642076"/>
+				<textFieldExpression><![CDATA[$F{FECHA_SESION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="12" width="100" height="20" uuid="cf85f785-6101-467f-9557-c3880a3ab291"/>
+				<textFieldExpression><![CDATA[$F{PRECIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

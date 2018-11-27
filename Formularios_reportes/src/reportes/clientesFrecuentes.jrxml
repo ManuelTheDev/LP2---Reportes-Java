@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0a5791d6-e404-4d71-8339-bab7c69e32d3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="11"/>
+	<queryString>
+		<![CDATA[SELECT SESION.ID_CLIENTE_FK, CONCAT(PERSONA.NOMBRES,' ',PERSONA.APELLIDO_PATERNO,' ', PERSONA.APELLIDO_MATERNO), COUNT(SESION.ID_CLIENTE_FK)
+			FROM SESION, CLIENTE, PERSONA
+            WHERE CLIENTE.ID_CLIENTE = SESION.ID_CLIENTE_FK AND CLIENTE.ID_PERSONA_FK = PERSONA.ID_PERSONA
+			GROUP BY SESION.ID_CLIENTE_FK 
+			ORDER BY COUNT(SESION.ID_CLIENTE_FK) DESC
+			LIMIT 5]]>
+	</queryString>
+	<field name="ID_CLIENTE_FK" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CONCAT(PERSONA.NOMBRES,&apos; &apos;,PERSONA.APELLIDO_PATERNO,&apos; &apos;, PERSONA.APELLIDO_MATERNO)" class="java.lang.String"/>
+	<field name="COUNT(SESION.ID_CLIENTE_FK)" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="142" y="17" width="278" height="30" uuid="5f156d25-15f2-4558-bb6b-d61a7bf41c8f"/>
+				<text><![CDATA[REPORTE DE LOS 5 CLIENTES MÁS FRECUENTES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="16" y="0" width="100" height="20" uuid="499253a7-6b44-4fa3-838d-8f462a85b421"/>
+				<text><![CDATA[ID CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="100" height="20" uuid="faff2851-ae3a-4475-8d85-c26ab09c263d"/>
+				<text><![CDATA[CUENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="0" width="125" height="20" uuid="6d11cdda-95d6-4502-9e49-5cefa82ae45b"/>
+				<text><![CDATA[NOMBRE DEL CLIENTE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="16" y="12" width="100" height="20" uuid="b4d06ef7-51d9-4d50-a509-7d220be3cf2e"/>
+				<textFieldExpression><![CDATA[$F{ID_CLIENTE_FK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="12" width="141" height="20" uuid="b5fb0bb5-9095-4f54-97ff-438cbb447334"/>
+				<textFieldExpression><![CDATA[$F{COUNT(SESION.ID_CLIENTE_FK)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="12" width="231" height="20" uuid="8ab9931c-65b3-4fe4-a7e7-3f27fe9b12f1"/>
+				<textFieldExpression><![CDATA[$F{CONCAT(PERSONA.NOMBRES,' ',PERSONA.APELLIDO_PATERNO,' ', PERSONA.APELLIDO_MATERNO)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="293" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="73" y="0" width="414" height="293" uuid="699f2008-2aa9-4bbd-a89c-f270aec9e71c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{ID_CLIENTE_FK}]]></keyExpression>
+					<valueExpression><![CDATA[$F{COUNT(SESION.ID_CLIENTE_FK)}]]></valueExpression>
+					<labelExpression><![CDATA[$F{CONCAT(PERSONA.NOMBRES,' ',PERSONA.APELLIDO_PATERNO,' ', PERSONA.APELLIDO_MATERNO)}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="151" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b26b4fc2-588b-48e2-80da-57a455287306">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="mes" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="año" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT S.NOMBRE,DC.ID_SERVICIO_FK,COUNT(*) AS CONTEO        
+FROM DETALLE_CITA AS DC, SERVICIO AS S, TRATAMIENTO AS T,CITA AS C
+WHERE DC.ID_SERVICIO_FK = S.ID_SERVICIO 
+AND S.ID_SERVICIO=T.ID_SERVICIO_FK AND S.ESTADO=1 AND C.ID_CITA = DC.ID_CITA_FK
+AND MONTH(C.FECHA_REGISTRO) = $P{mes} AND YEAR(C.FECHA_REGISTRO) = $P{año}
+group by DC.ID_SERVICIO_FK order by CONTEO desc
+limit 5;]]>
+	</queryString>
+	<field name="NOMBRE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ID_SERVICIO_FK" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CONTEO" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="103" y="29" width="348" height="25" uuid="4bc06e90-a8b5-4f28-bfb3-63f2583e87f2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE LOS TRATAMIENTOS MAS VENDIDOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="85" y="41" width="154" height="20" uuid="62a9f6ce-8ec6-4598-bc95-fcae9e533bd2"/>
+				<text><![CDATA[NOMBRE DEL TRATAMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="41" width="100" height="20" uuid="404015d3-a540-46c5-9032-e6b5241aa3d1"/>
+				<text><![CDATA[CONTEO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="85" y="0" width="100" height="20" uuid="16906a8a-013f-4ae4-86e2-01db09bc0c8e"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="309" y="0" width="100" height="20" uuid="cc10183f-07c9-4093-bd3a-ae929345bcc8"/>
+				<textFieldExpression><![CDATA[$F{CONTEO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="286" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="56" y="0" width="445" height="266" uuid="687de151-1946-4330-94fb-839ab1511a2a"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{NOMBRE}]]></keyExpression>
+					<valueExpression><![CDATA[$F{CONTEO}]]></valueExpression>
+				</pieDataset>
+				<piePlot isShowLabels="false" isCircular="true" labelFormat="{2}" legendLabelFormat="{0}">
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
