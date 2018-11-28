@@ -1,6 +1,7 @@
 
 package formularios_reportes;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -40,7 +41,6 @@ public class frmReportes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbTiposReporte = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
@@ -49,91 +49,134 @@ public class frmReportes extends javax.swing.JFrame {
         cbAnho = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(236, 242, 234));
 
-        jLabel1.setText("REPORTES");
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel2.setText("SELECCIONE EL REPORTE QUE DESEE GENERAR:");
 
-        jLabel2.setText("Seleccione el tipo de Reporte que desea generar:");
-
-        cbTiposReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clientes Frecuentes", "Ganancias Mensuales", "Tratamientos más solicitados", "Paquetes más solicitados", "Rendimiento de las terapistas" }));
+        cbTiposReporte.setBackground(new java.awt.Color(51, 51, 51));
+        cbTiposReporte.setEditable(true);
+        cbTiposReporte.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        cbTiposReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLIENTES FRECUENTES", "GANANCIAS MENSUALES", "TRATAMIENTOS MÁS SOLICITADOS", "PAQUETES MÁS SOLICITADOS", "RENDIMIENTO DE LAS TERAPISTAS" }));
+        cbTiposReporte.setBorder(null);
+        cbTiposReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cbTiposReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTiposReporteActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Mes:");
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel3.setText("MES:");
 
-        jLabel4.setText("Año:");
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel4.setText("AÑO:");
 
-        cbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cbMes.setBackground(new java.awt.Color(0, 0, 0));
+        cbMes.setEditable(true);
+        cbMes.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        cbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" }));
+        cbMes.setBorder(null);
 
+        cbAnho.setBackground(new java.awt.Color(0, 0, 0));
+        cbAnho.setEditable(true);
+        cbAnho.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cbAnho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2015", "2016", "2017", "2018" }));
+        cbAnho.setBorder(null);
 
-        jButton1.setText("Generar Reporte");
+        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jButton1.setText("GENERAR REPORTE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Descargar en PDF");
+        jButton2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jButton2.setText("DESCARGAR EN PDF");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(166, 228, 35));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("REPORTES");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(48, 48, 48))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(62, 62, 62)
-                        .addComponent(jButton2))
-                    .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(45, 45, 45)
-                        .addComponent(cbTiposReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(18, 18, 18)
-                            .addComponent(cbAnho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(cbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(225, Short.MAX_VALUE))
+                        .addGap(0, 214, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbAnho, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel3)))
+                                    .addGap(99, 99, 99)
+                                    .addComponent(cbTiposReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(205, 205, 205))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cbTiposReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(cbTiposReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(cbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cbAnho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                    .addComponent(cbAnho, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(138, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,21 +192,22 @@ public class frmReportes extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://quilla.lab.inf.pucp.edu.pe:3306/inf282g4",
                     "inf282g4", "GvZf6p");
+           
             
             String mesString = cbMes.getSelectedItem().toString();
             Integer numMes = 1;
-            if(mesString == "Enero") numMes = 1;
-            if(mesString == "Febrero") numMes = 2;
-            if(mesString == "Marzo") numMes = 3;
-            if(mesString == "Abril") numMes = 4;
-            if(mesString == "Mayo") numMes = 5;
-            if(mesString == "Junio") numMes = 6;
-            if(mesString == "Julio") numMes = 7;
-            if(mesString == "Agosto") numMes = 8;
-            if(mesString == "Septiembre") numMes = 9;
-            if(mesString == "Octubre") numMes = 10;
-            if(mesString == "Noviembre") numMes = 11;
-            if(mesString == "Diciembre") numMes = 12;
+            if(mesString == "ENERO") numMes = 1;
+            if(mesString == "FEBRERO") numMes = 2;
+            if(mesString == "MARZO") numMes = 3;
+            if(mesString == "ABRIL") numMes = 4;
+            if(mesString == "MAYO") numMes = 5;
+            if(mesString == "JUNIO") numMes = 6;
+            if(mesString == "JULIO") numMes = 7;
+            if(mesString == "AGOSTO") numMes = 8;
+            if(mesString == "SEPTIEMBRE") numMes = 9;
+            if(mesString == "OCTUBRE") numMes = 10;
+            if(mesString == "NOVIEMBRE") numMes = 11;
+            if(mesString == "DICIEMBRE") numMes = 12;
             
             Integer anho = Integer.parseInt(cbAnho.getSelectedItem().toString());
             
@@ -176,23 +220,23 @@ public class frmReportes extends javax.swing.JFrame {
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
             };
-            if(cbTiposReporte.getSelectedItem().toString() == "Tratamientos más solicitados"){
+            if(cbTiposReporte.getSelectedItem().toString() == "TRATAMIENTOS MÁS SOLICITADOS"){
                 in = new FileInputStream(new File("./src/reportes/tratamientosMasVendidos.jrxml"));
                 para.put("mes",numMes);
                 para.put("año",anho);
             }
                 
-            else if(cbTiposReporte.getSelectedItem().toString() == "Paquetes más solicitados"){
+            else if(cbTiposReporte.getSelectedItem().toString() == "PAQUETES MÁS SOLICITADOS"){
                 in = new FileInputStream(new File("./src/reportes/paquetesMasVendidos.jrxml"));
                 para.put("mes",numMes);
                 para.put("año",anho);
             }                 
-            else if(cbTiposReporte.getSelectedItem().toString() == "Ganancias Mensuales"){
+            else if(cbTiposReporte.getSelectedItem().toString() == "GANACIAS MENSUALES"){
                 in = new FileInputStream(new File("./src/reportes/gananciasMensuales.jrxml"));
                 para.put("mes",numMes);
                 para.put("año",anho);
             }
-            else if(cbTiposReporte.getSelectedItem().toString() == "Clientes Frecuentes"){
+            else if(cbTiposReporte.getSelectedItem().toString() == "CLIENTES FRECUENTES"){
                 in = new FileInputStream(new File("./src/reportes/clientesFrecuentes.jrxml"));
             }
             
@@ -214,21 +258,21 @@ public class frmReportes extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://quilla.lab.inf.pucp.edu.pe:3306/inf282g4",
                     "inf282g4", "GvZf6p");
-            
+            jButton2.setBackground(Color.BLACK);
             String mesString = cbMes.getSelectedItem().toString();
             Integer numMes = 1;
-            if(mesString == "Enero") numMes = 1;
-            if(mesString == "Febrero") numMes = 2;
-            if(mesString == "Marzo") numMes = 3;
-            if(mesString == "Abril") numMes = 4;
-            if(mesString == "Mayo") numMes = 5;
-            if(mesString == "Junio") numMes = 6;
-            if(mesString == "Julio") numMes = 7;
-            if(mesString == "Agosto") numMes = 8;
-            if(mesString == "Septiembre") numMes = 9;
-            if(mesString == "Octubre") numMes = 10;
-            if(mesString == "Noviembre") numMes = 11;
-            if(mesString == "Diciembre") numMes = 12;
+            if(mesString == "ENERO") numMes = 1;
+            if(mesString == "FEBRERO") numMes = 2;
+            if(mesString == "MARZO") numMes = 3;
+            if(mesString == "ABRIL") numMes = 4;
+            if(mesString == "MAYO") numMes = 5;
+            if(mesString == "JUNIO") numMes = 6;
+            if(mesString == "JULIO") numMes = 7;
+            if(mesString == "AGOSTO") numMes = 8;
+            if(mesString == "SEPTIEMBRE") numMes = 9;
+            if(mesString == "OCTUBRE") numMes = 10;
+            if(mesString == "NOVIEMBRE") numMes = 11;
+            if(mesString == "DICIEMBRE") numMes = 12;
             
             Integer anho = Integer.parseInt(cbAnho.getSelectedItem().toString());
             
@@ -241,7 +285,7 @@ public class frmReportes extends javax.swing.JFrame {
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
             };
-            if(cbTiposReporte.getSelectedItem().toString() == "Tratamientos más solicitados"){
+            if(cbTiposReporte.getSelectedItem().toString() == "TRATAMIENTOS MÁS SOLICITADOS"){
                 in = new FileInputStream(new File("./src/reportes/tratamientosMasVendidos.jrxml"));
                 
                 JasperDesign jd = JRXmlLoader.load(in);
@@ -253,7 +297,7 @@ public class frmReportes extends javax.swing.JFrame {
                 OutputStream os = new FileOutputStream (new File("./src/Reportes pdf/tratamientos.pdf"));
                 JasperExportManager.exportReportToPdfStream(j,os);
             }
-            else if(cbTiposReporte.getSelectedItem().toString() == "Paquetes más solicitados"){
+            else if(cbTiposReporte.getSelectedItem().toString() == "PAQUETES MÁS SOLICITADOS"){
                 in = new FileInputStream(new File("./src/reportes/paquetesMasVendidos.jrxml"));
                 
                 JasperDesign jd = JRXmlLoader.load(in);
@@ -265,7 +309,7 @@ public class frmReportes extends javax.swing.JFrame {
                 OutputStream os = new FileOutputStream (new File("./src/Reportes pdf/paquetes.pdf"));
                 JasperExportManager.exportReportToPdfStream(j,os);
             }
-            else if(cbTiposReporte.getSelectedItem().toString() == "Clientes Frecuentes"){
+            else if(cbTiposReporte.getSelectedItem().toString() == "CLIENTES FRECUENTES"){
                 in = new FileInputStream(new File("./src/reportes/clientesFrecuentes.jrxml"));
                 
                 JasperDesign jd = JRXmlLoader.load(in);
@@ -274,7 +318,7 @@ public class frmReportes extends javax.swing.JFrame {
                 OutputStream os = new FileOutputStream (new File("./src/Reportes pdf/clientes.pdf"));
                 JasperExportManager.exportReportToPdfStream(j,os);
             }
-            else if(cbTiposReporte.getSelectedItem().toString() == "Ganancias mensuales"){
+            else if(cbTiposReporte.getSelectedItem().toString() == "GANANCIAS MENSUALES "){
                 in = new FileInputStream(new File("./src/reportes/gananciasMensuales.jrxml"));
                 
                 JasperDesign jd = JRXmlLoader.load(in);
@@ -301,6 +345,7 @@ public class frmReportes extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+       
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -318,7 +363,7 @@ public class frmReportes extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(frmReportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -340,5 +385,6 @@ public class frmReportes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
