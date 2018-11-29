@@ -40,13 +40,17 @@ ORDER BY GANANCIAS DESC]]>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="294" y="15" width="100" height="20" uuid="eff3f5c9-337a-4180-a69d-fceebb70ddf2"/>
+				<reportElement x="251" y="15" width="90" height="20" uuid="eff3f5c9-337a-4180-a69d-fceebb70ddf2"/>
 				<textFieldExpression><![CDATA[$P{mes}.toString().equals("11") ? "Noviembre" : $P{mes}.toString().equals("12") ? "Diciembre" : $P{mes}.toString().equals("10") ? "Octubre" : $P{mes}.toString().equals("9") ? "Septiembre" : $P{mes}.toString().equals("8") ? "Agosto" : $P{mes}.toString().equals("7") ? "Julio" : $P{mes}.toString().equals("6") ? "Junio" : $P{mes}.toString().equals("5") ? "Mayo" : $P{mes}.toString().equals("4") ? "Abril" : $P{mes}.toString().equals("3") ? "Marzo" : $P{mes}.toString().equals("2") ? "Febrero" : "Enero"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="431" y="15" width="100" height="20" uuid="4523e8f6-953e-4c5b-9066-996b52f2af5c"/>
+				<reportElement x="341" y="15" width="100" height="20" uuid="4523e8f6-953e-4c5b-9066-996b52f2af5c"/>
 				<textFieldExpression><![CDATA[$P{año}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="178" y="15" width="73" height="20" uuid="2d264aeb-2bfe-4a94-aef4-6e24fd8d01db"/>
+				<text><![CDATA[Para el mes de]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
