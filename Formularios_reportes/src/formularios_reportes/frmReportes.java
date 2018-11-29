@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -35,6 +36,10 @@ public class frmReportes extends javax.swing.JFrame {
 
     public frmReportes() {
         initComponents();
+        jLabel3.setVisible(false);
+        jLabel4.setVisible(false);
+        cbMes.setVisible(false);
+        cbAnho.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -58,8 +63,6 @@ public class frmReportes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel2.setText("SELECCIONE EL REPORTE QUE DESEE GENERAR:");
 
-        cbTiposReporte.setBackground(new java.awt.Color(51, 51, 51));
-        cbTiposReporte.setEditable(true);
         cbTiposReporte.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cbTiposReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CLIENTES FRECUENTES", "GANANCIAS MENSUALES", "TRATAMIENTOS MÁS SOLICITADOS", "PAQUETES MÁS SOLICITADOS", "RENDIMIENTO DE LAS TERAPISTAS" }));
         cbTiposReporte.setBorder(null);
@@ -76,14 +79,10 @@ public class frmReportes extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel4.setText("AÑO:");
 
-        cbMes.setBackground(new java.awt.Color(0, 0, 0));
-        cbMes.setEditable(true);
         cbMes.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" }));
         cbMes.setBorder(null);
 
-        cbAnho.setBackground(new java.awt.Color(0, 0, 0));
-        cbAnho.setEditable(true);
         cbAnho.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cbAnho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2015", "2016", "2017", "2018" }));
         cbAnho.setBorder(null);
@@ -184,6 +183,31 @@ public class frmReportes extends javax.swing.JFrame {
 
     private void cbTiposReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTiposReporteActionPerformed
         // TODO add your handling code here:
+        if(cbTiposReporte.getSelectedItem().toString() == "TRATAMIENTOS MÁS SOLICITADOS"){
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            cbMes.setVisible(true);
+            cbAnho.setVisible(true);
+        }
+
+        else if(cbTiposReporte.getSelectedItem().toString() == "PAQUETES MÁS SOLICITADOS"){
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            cbMes.setVisible(true);
+            cbAnho.setVisible(true);
+        }                 
+        else if(cbTiposReporte.getSelectedItem().toString() == "GANANCIAS MENSUALES"){
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            cbMes.setVisible(true);
+            cbAnho.setVisible(true);
+        }
+        else if(cbTiposReporte.getSelectedItem().toString() == "CLIENTES FRECUENTES"){
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            cbMes.setVisible(false);
+            cbAnho.setVisible(false);
+        }
     }//GEN-LAST:event_cbTiposReporteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -231,7 +255,7 @@ public class frmReportes extends javax.swing.JFrame {
                 para.put("mes",numMes);
                 para.put("año",anho);
             }                 
-            else if(cbTiposReporte.getSelectedItem().toString() == "GANACIAS MENSUALES"){
+            else if(cbTiposReporte.getSelectedItem().toString() == "GANANCIAS MENSUALES"){
                 in = new FileInputStream(new File("./src/reportes/gananciasMensuales.jrxml"));
                 para.put("mes",numMes);
                 para.put("año",anho);
@@ -249,6 +273,8 @@ public class frmReportes extends javax.swing.JFrame {
         }
         catch(Exception ex){
             ex.printStackTrace();
+            return;
+            
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

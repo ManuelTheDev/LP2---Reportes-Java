@@ -10,11 +10,11 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT SERVICIO.NOMBRE, SESION.FECHA_SESION, SERVICIO.PRECIO
+		<![CDATA[SELECT SERVICIO.NOMBRE, SESION.FECHA_SESION, SUM(SERVICIO.PRECIO) AS GANANCIAS
 FROM SESION, SERVICIO 
 WHERE SERVICIO.ID_SERVICIO = SESION.ID_SERVICIO_FK AND MONTH(FECHA_SESION) = $P{mes} AND YEAR(FECHA_SESION) = $P{año}
 GROUP BY SERVICIO.NOMBRE
-ORDER BY SESION.FECHA_SESION]]>
+ORDER BY GANANCIAS DESC]]>
 	</queryString>
 	<field name="NOMBRE" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -22,9 +22,7 @@ ORDER BY SESION.FECHA_SESION]]>
 	<field name="FECHA_SESION" class="java.sql.Timestamp">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="PRECIO" class="java.lang.Double">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="GANANCIAS" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -43,7 +41,7 @@ ORDER BY SESION.FECHA_SESION]]>
 		<band height="35" splitType="Stretch">
 			<textField>
 				<reportElement x="294" y="15" width="100" height="20" uuid="eff3f5c9-337a-4180-a69d-fceebb70ddf2"/>
-				<textFieldExpression><![CDATA[$P{mes}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mes}.toString().equals("11") ? "Noviembre" : $P{mes}.toString().equals("12") ? "Diciembre" : $P{mes}.toString().equals("10") ? "Octubre" : $P{mes}.toString().equals("9") ? "Septiembre" : $P{mes}.toString().equals("8") ? "Agosto" : $P{mes}.toString().equals("7") ? "Julio" : $P{mes}.toString().equals("6") ? "Junio" : $P{mes}.toString().equals("5") ? "Mayo" : $P{mes}.toString().equals("4") ? "Abril" : $P{mes}.toString().equals("3") ? "Marzo" : $P{mes}.toString().equals("2") ? "Febrero" : "Enero"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="431" y="15" width="100" height="20" uuid="4523e8f6-953e-4c5b-9066-996b52f2af5c"/>
@@ -63,7 +61,7 @@ ORDER BY SESION.FECHA_SESION]]>
 			</staticText>
 			<staticText>
 				<reportElement x="407" y="10" width="100" height="20" uuid="6f719c58-6197-4877-9840-361d3308c668"/>
-				<text><![CDATA[Precio]]></text>
+				<text><![CDATA[Ganancias]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -79,7 +77,7 @@ ORDER BY SESION.FECHA_SESION]]>
 			</textField>
 			<textField>
 				<reportElement x="407" y="12" width="100" height="20" uuid="cf85f785-6101-467f-9557-c3880a3ab291"/>
-				<textFieldExpression><![CDATA[$F{PRECIO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{GANANCIAS}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
